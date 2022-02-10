@@ -6,7 +6,7 @@
 <header class="bg-white shadow">
   <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
       <h1 class="text-3xl font-bold text-gray-900">
-        Plantes
+        Projets
         <button
           type="button"
           data-mdb-ripple="true"
@@ -39,42 +39,63 @@
     <!-- Replace with your content -->
     <div class="px-4 py-6 sm:px-0">
       <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
-
+        {{-- 'nom', 'sexe', 'age', 'email', 'telephone', 'whatsapp', 'source', 'biographie', 'possede_agrix' --}}
         <table class="min-w-full text-center">
           <thead class="border-b bg-gray-800">
             <tr>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                #
-              </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                Nom
-              </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                Type Semence
-              </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                Périodicité
-              </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                Actions
-              </th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">#</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Nom</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Sexe</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Age</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Email</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Télephone</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Whatsapp</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Possède Agrix</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Actions</th>
             </tr>
           </thead class="border-b">
           <tbody>
-            @foreach ($plantes as $key => $plante)
+            @foreach ($projets as $key => $projet)
             <tr class="bg-white border-b">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ ++$key }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->nom }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->sexe }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->age }} ans</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->email }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->telephone }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->whatsapp }}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  {{ $plante->nom }}
+                
+                <input 
+                  class="form-check-input
+                      appearance-none
+                      h-4
+                      w-4
+                      border
+                      border-gray-300
+                      rounded-sm
+                      bg-white
+                      checked:bg-blue-600
+                      checked:border-blue-600
+                      focus:outline-none
+                      transition
+                      duration-200
+                      mt-1
+                      align-top
+                      bg-no-repeat
+                      bg-center
+                      bg-contain
+                      float-left
+                      mr-2
+                      cursor-pointer"
+                  type="checkbox"
+                  disabled
+                  {{ $projet->possede_agrix ? 'checked' : '' }}
+                >
               </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  {{ $plante->type_semence }}
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  {{ $plante->periodicite }} Jours
-              </td>
+              {{-- <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="inlineCheckbox1" value="option1"> --}}
               <td class="text-center">
-                <form class="inline-block" method="POST" action="{{ route('plantes.destroy', $plante->id) }}" >
+                <form class="inline-block" method="POST" action="{{ route('projets.destroy', $projet->id) }}" >
                   @csrf @method('DELETE')
                   <button type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="cursor-pointer bi bi-trash inline-block" style="color: rgb(153 27 27);" viewBox="0 0 16 16">
@@ -83,7 +104,7 @@
                     </svg>
                   </button>  
                 </form>
-                <button onclick='editPlante(@json($plante))'>
+                <button onclick='editProjet(@json($projet))'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="cursor-pointer bi bi-pencil inline-block" style="color: rgb(3 105 161);" viewBox="0 0 16 16">
                     <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                   </svg>
@@ -100,7 +121,7 @@
   </div>
 </main>
 
-@include('plantes.create')
-@include('plantes.update')
+@include('projets.create')
+@include('projets.update')
 
 @endsection

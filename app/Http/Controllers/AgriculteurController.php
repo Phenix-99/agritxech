@@ -46,6 +46,11 @@ class AgriculteurController extends Controller
         // dd($request->all());
         $request->validate([
             'nom' => ['required', 'string', 'max:255'],
+            'age' => ['required', 'string', 'max:255'],
+            'sexe' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'telephone' => ['required', 'string', 'max:255'],
+            'whatsapp' => ['required', 'string', 'max:255'],
         ]);
 
         $agriculteur = Agriculteur::create($request->all());
@@ -92,7 +97,7 @@ class AgriculteurController extends Controller
         $agriculteur->update($request->all());
 
         return redirect()->route('agriculteurs.index')
-            ->with('success', 'Agriculteur mise à jour');
+            ->with('success', 'Agriculteur mis à jour');
     }
 
     /**

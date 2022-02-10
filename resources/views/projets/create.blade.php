@@ -1,17 +1,17 @@
-<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="edit-projet" tabindex="-1" aria-labelledby="newPlantModalTitle" aria-modal="true" role="dialog">
+
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="newPlantModal" tabindex="-1" aria-labelledby="newPlantModalTitle" aria-modal="true" role="dialog">
     <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+      <form method="POST" action="{{ route('projets.store') }}" class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
         <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
           <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-            Modifier Projet
+            Nouveau Projet
           </h5>
           <button type="button"
             class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
             data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form id="u_projet" method="POST" class="modal-body relative p-4">
+        <div class="modal-body relative p-4">
             @csrf
-            @method('PUT') <input type="hidden" class="form-control" name="id" id="u_id" >
             <div class="form-group mb-6">
               <input type="text" class="form-control block
                 w-full
@@ -26,7 +26,7 @@
                 transition
                 ease-in-out
                 m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="nom" id="u_nom"
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="nom" id="nom"
                 placeholder="Nom">
             </div>
             <div class="form-group mb-6">
@@ -43,7 +43,7 @@
                 transition
                 ease-in-out
                 m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="email" id="u_email"
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="email" id="email"
                 placeholder="Email">
             </div>
             <div class="grid grid-cols-2 gap-4">
@@ -64,7 +64,7 @@
                     m-0
                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     required
-                    name="sexe" id="u_sexe"
+                    name="sexe" id="sexe"
                     aria-label="Sexe">
                       <option value="">Sexe</option>
                       <option value="Homme">Homme</option>
@@ -86,7 +86,7 @@
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="age" id="u_age"
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="age" id="age"
                   aria-label="Age" placeholder="Age">
               </div>
             </div>
@@ -106,7 +106,7 @@
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="telephone" id="u_telephone"
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="telephone" id="telephone"
                   aria-label="Téléphone" placeholder="Téléphone">
               </div>
               <div class="form-group mb-6">
@@ -124,7 +124,7 @@
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="whatsapp" id="u_whatsapp"
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="whatsapp" id="whatsapp"
                   aria-label="WhatsApp" placeholder="WhatsApp">
               </div>
             </div>
@@ -142,7 +142,7 @@
                 transition
                 ease-in-out
                 m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="source" id="u_source"
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="source" id="source"
                 placeholder="Source">
             </div>
             <div class="form-group mb-6">
@@ -164,22 +164,21 @@
                   m-0
                   focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
                 "
-                id="u_biographie"
+                id="biographie"
                 name="biographie"
                 rows="3"
                 placeholder="Biographie"
               ></textarea>
             </div>
-            {{-- <div class="flex justify-center">
+            <div class="flex justify-center">
               <div class="form-group form-check mb-6">
                 <input type="checkbox"
                   class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                  id="u_possede_agrix" name="possede_agrix" value="true">
+                  id="possede_agrix" name="possede_agrix" value="true">
                 <label class="form-check-label inline-block text-gray-800" for="possede_agrix">Possède Agrix</label>
               </div>
-            </div> --}}
-
-        </form>
+            </div>
+        </div>
         <div
           class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
           <button type="button"
@@ -187,32 +186,11 @@
             data-bs-dismiss="modal">
             Annuler
           </button>
-          <button 
-            onclick="updateProjet()"
+          <button type="submit"
             class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
             Sauver
           </button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
-
-  <script>
-    function editProjet(projet) {
-      console.log(projet); 
-      $.each( projet, function( key, value ) {
-        console.log("#u_%s : %s", key, value); 
-        $("#u_"+key).val(value).change();
-      });
-      $('#edit-projet').modal('show');
-    }
-  
-    function updateProjet() {
-      var form = $('#u_projet');
-  
-      var id = $('#u_id').val();
-      let _url     = `/projets/${id}`;
-      form.attr('action', _url);
-      form.submit();
-    }
-  </script>

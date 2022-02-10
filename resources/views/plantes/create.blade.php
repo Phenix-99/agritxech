@@ -66,7 +66,7 @@
                     required
                     name="type_semence" id="type_semence"
                     aria-label="Type Semence">
-                      <option></option>
+                      <option value="">Selectionner</option>
                       <option value="Vivre Frais">Vivre Frais</option>
                       <option value="Tubercules">Tubercules</option>
                       <option value="Céréales">Céréales</option>

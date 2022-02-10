@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanteController;
 use App\Http\Controllers\AgriculteurController;
+use App\Http\Controllers\ProjetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('projets', ProjetController::class);
 Route::resource('agriculteurs', AgriculteurController::class);
 Route::resource('plantes', PlanteController::class);

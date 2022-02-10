@@ -128,7 +128,6 @@
                   aria-label="WhatsApp" placeholder="WhatsApp">
               </div>
             </div>
-            
             <div class="form-group mb-6">
               <input type="text" class="form-control block
                 w-full
@@ -179,7 +178,6 @@
                 <label class="form-check-label inline-block text-gray-800" for="possede_agrix">Possède Agrix</label>
               </div>
             </div>
-
         </div>
         <div
           class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
