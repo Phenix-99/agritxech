@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanteController;
+use App\Http\Controllers\AgriculteurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('agriculteurs', AgriculteurController::class);
 Route::resource('plantes', PlanteController::class);

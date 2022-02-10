@@ -64,10 +64,10 @@
   <!-- Left links -->
   <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
     <li class="nav-item p-2">
-      <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Plantes</a>
+      <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="{{ route('plantes.index') }}">Plantes</a>
     </li>
     <li class="nav-item p-2">
-      <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Agriculteurs</a>
+      <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="{{ route('agriculteurs.index') }}">Agriculteurs</a>
     </li>
     <li class="nav-item p-2">
       <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Projets</a>
