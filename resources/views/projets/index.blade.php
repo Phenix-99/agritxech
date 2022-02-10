@@ -39,18 +39,18 @@
     <!-- Replace with your content -->
     <div class="px-4 py-6 sm:px-0">
       <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
-        {{-- 'nom', 'sexe', 'age', 'email', 'telephone', 'whatsapp', 'source', 'biographie', 'possede_agrix' --}}
+        {{-- 'pays', 'region', 'superficie', 'localisation_champ', 'date_semis', 'date_anticipe_recolte', 'date_prise_contact', 'plante_id', 'agriculteur_id' --}}
         <table class="min-w-full text-center">
           <thead class="border-b bg-gray-800">
             <tr>
               <th scope="col" class="text-sm font-medium text-white px-6 py-4">#</th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Nom</th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Sexe</th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Age</th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Email</th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Télephone</th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Whatsapp</th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Possède Agrix</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Superficie</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Pays</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Région</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Date Semis</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Date Recolte</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Prise Contact</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Localisation</th>
               <th scope="col" class="text-sm font-medium text-white px-6 py-4">Actions</th>
             </tr>
           </thead class="border-b">
@@ -58,42 +58,13 @@
             @foreach ($projets as $key => $projet)
             <tr class="bg-white border-b">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ ++$key }}</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->nom }}</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->sexe }}</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->age }} ans</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->email }}</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->telephone }}</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->whatsapp }}</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                
-                <input 
-                  class="form-check-input
-                      appearance-none
-                      h-4
-                      w-4
-                      border
-                      border-gray-300
-                      rounded-sm
-                      bg-white
-                      checked:bg-blue-600
-                      checked:border-blue-600
-                      focus:outline-none
-                      transition
-                      duration-200
-                      mt-1
-                      align-top
-                      bg-no-repeat
-                      bg-center
-                      bg-contain
-                      float-left
-                      mr-2
-                      cursor-pointer"
-                  type="checkbox"
-                  disabled
-                  {{ $projet->possede_agrix ? 'checked' : '' }}
-                >
-              </td>
-              {{-- <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="inlineCheckbox1" value="option1"> --}}
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->superficie }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->pays }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->region }} ans</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->date_semis }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->date_anticipe_recolte }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->date_prise_contact }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->localisation_champ }}</td>
               <td class="text-center">
                 <form class="inline-block" method="POST" action="{{ route('projets.destroy', $projet->id) }}" >
                   @csrf @method('DELETE')
