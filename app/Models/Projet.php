@@ -11,4 +11,14 @@ class Projet extends Model
     protected $fillable = [
         'pays', 'region', 'superficie', 'localisation_champ', 'date_semis', 'date_anticipe_recolte', 'date_prise_contact', 'plante_id', 'agriculteur_id'
     ];
+
+    public function plante()
+    {
+        return $this->belongsTo(Plante::class);
+    }
+
+    public function agriculteur()
+    {
+        return $this->belongsTo(Agriculteur::class);
+    }
 }

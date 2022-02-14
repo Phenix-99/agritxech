@@ -60,8 +60,12 @@
             @foreach ($projets as $key => $projet)
             <tr class="bg-white border-b">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ ++$key }}</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->plante_id }}</td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->agriculteur_id }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <button onclick='editPlante(@json($projet->plante))' class="underline text-blue-400 hover:text-blue-500 transition duration-300 ease-in-out mb-4">{{ $projet->plante->nom }}</button>
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <button onclick='editAgriculteur(@json($projet->agriculteur))' class="underline text-blue-400 hover:text-blue-500 transition duration-300 ease-in-out mb-4">{{ $projet->agriculteur->nom }}</button>
+              </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->superficie }}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->pays }}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->region }} ans</td>
@@ -98,5 +102,8 @@
 
 @include('projets.create')
 @include('projets.update')
+
+@include('plantes.update')
+@include('agriculteurs.update')
 
 @endsection
