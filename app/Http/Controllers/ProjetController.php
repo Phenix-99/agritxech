@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projet;
+use App\Models\Agriculteur;
+use App\Models\Plante;
 use App\Helpers\Setting;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -22,7 +24,10 @@ class ProjetController extends Controller
     public function index()
     {
         $projets = Projet::latest()->get();
-        return view('projets.index', compact('projets'));
+        $agriculteurs = Agriculteur::all();
+        $plantes = Plante::all();
+        
+        return view('projets.index', compact('projets', 'agriculteurs', 'plantes'));
     }
 
     /**
@@ -45,7 +50,7 @@ class ProjetController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'superficie' => ['required', 'number'],
+            'superficie' => ['required'],
             'date_semis' => ['required', 'date', 'max:255'],
             'date_prise_contact' => ['required', 'date', 'max:255'],
             'plante_id' => ['required'],

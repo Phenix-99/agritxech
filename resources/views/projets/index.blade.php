@@ -38,12 +38,14 @@
     @endif
     <!-- Replace with your content -->
     <div class="px-4 py-6 sm:px-0">
-      <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
+      <div class="border-4 border-dashed  border-gray-200 rounded-lg h-96 overflow-x-auto">
         {{-- 'pays', 'region', 'superficie', 'localisation_champ', 'date_semis', 'date_anticipe_recolte', 'date_prise_contact', 'plante_id', 'agriculteur_id' --}}
         <table class="min-w-full text-center">
           <thead class="border-b bg-gray-800">
             <tr>
               <th scope="col" class="text-sm font-medium text-white px-6 py-4">#</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Plante</th>
+              <th scope="col" class="text-sm font-medium text-white px-6 py-4">Agriculteur</th>
               <th scope="col" class="text-sm font-medium text-white px-6 py-4">Superficie</th>
               <th scope="col" class="text-sm font-medium text-white px-6 py-4">Pays</th>
               <th scope="col" class="text-sm font-medium text-white px-6 py-4">Région</th>
@@ -58,6 +60,8 @@
             @foreach ($projets as $key => $projet)
             <tr class="bg-white border-b">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ ++$key }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->plante_id }}</td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->agriculteur_id }}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->superficie }}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->pays }}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ $projet->region }} ans</td>
