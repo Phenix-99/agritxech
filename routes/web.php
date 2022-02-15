@@ -20,6 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('projets', ProjetController::class);
-Route::resource('agriculteurs', AgriculteurController::class);
-Route::resource('plantes', PlanteController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+Route::resource('projets', ProjetController::class)->middleware('auth');
+Route::resource('agriculteurs', AgriculteurController::class)->middleware('auth');
+Route::resource('plantes', PlanteController::class)->middleware('auth');
+
+require __DIR__.'/auth.php';

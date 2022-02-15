@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-{{-- float-right hover:float-left --}}
+{{-- float-right   --}}
 
 <header class="bg-white shadow">
   <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -12,7 +12,7 @@
           data-mdb-ripple="true"
           data-mdb-ripple-color="light"
           data-bs-toggle="modal" data-bs-target="#newPlantModal"
-          class="float-right hover:float-left inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          class="float-right   inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
         >Nouveau</button>
       </h1>
   </div>
